@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -12,6 +17,9 @@ import {
 })
 export class FormComponent implements OnInit {
   /* name = new FormControl('hacode'); */
+
+  @Output() dataUser = new EventEmitter<object>();
+
   userForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
@@ -31,13 +39,13 @@ export class FormComponent implements OnInit {
       console.log('value', value);
       console.log('name', this.userForm.controls.firstName);
     })
-    
+
     console.log(this.userForm);
   }
 
   ngOnInit(): void { }
   onSubmit(): void {
-    console.log(this.userForm.value);
+   this.dataUser.emit(this.userForm.value);
   }
 }
 

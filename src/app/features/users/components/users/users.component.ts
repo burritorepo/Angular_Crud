@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../../../api/api/api.service';
 
 @Component({
   selector: 'app-users',
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  constructor() { }
+  users: any;
 
-  ngOnInit(): void { }
+  constructor(private api: ApiService) { }
+
+  ngOnInit(): void {
+   this.api.getUsers().subscribe((users) => {
+     this.users = users;
+   })
+  }
 }
 

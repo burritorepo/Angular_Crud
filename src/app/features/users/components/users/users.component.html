@@ -1,3 +1,7 @@
 <div>
   <button>I'm UserComponent</button>
+  <ng-container *ngFor="let user of users">
+    {{user | json}}
+    <app-card [user]='user'></app-card>
+  </ng-container>
 </div>

@@ -4,6 +4,9 @@ import {
   FormsModule,
   ReactiveFormsModule
 } from '@angular/forms';
+import {
+  ApiService
+} from '../../api/api/api.service';
 
 import { USERS_COMPONENTS } from './components'
 import { UsersRoutingModule } from './users.routing.module'
@@ -17,6 +20,6 @@ import { UsersRoutingModule } from './users.routing.module'
     UsersRoutingModule
   ],
   exports: [],
-  providers: [],
+  providers: [ApiService],
 })
 export class UsersModule { }
